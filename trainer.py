@@ -20,7 +20,7 @@ def main(cfg: DictConfig):
     # Load the configuration from the YAML file using hydra.compose()
     config = compose(config_name="config_ico_dec_Res")
 
-    wandb.login(key="076f344a1d6ba7a5ebd07c6e7197d15df60c793f")
+    wandb.login()
 
     #{params['model_type']} 
 
@@ -85,6 +85,7 @@ def main(cfg: DictConfig):
 
 if __name__ == "__main__":
     main()
+
 
 
 
