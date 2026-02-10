@@ -44,7 +44,7 @@ def main(cfg: DictConfig):
 
     # Optionally, you can load the configuration from the YAML file using hydra.compose()
     config = compose(config_name="config_ico_dec_Res")
-    wandb.login(key="076f344a1d6ba7a5ebd07c6e7197d15df60c793f")
+    wandb.login()
 
     # TODO: Adjust this path based on your project structure
 
@@ -67,3 +67,4 @@ def main(cfg: DictConfig):
 
 if __name__ == "__main__":
     main()
+
