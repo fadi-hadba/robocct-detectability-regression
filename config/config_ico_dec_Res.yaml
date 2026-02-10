@@ -1,0 +1,59 @@
+
+project: DecIdx_Sphere_iCT_Test
+entity: patternrecognition_team
+
+model_type: ResNet50
+train_ratio: 0.8
+resize_shape: 50
+batch_size: 16
+base_lr: 0.0005
+num_epochs: 200
+
+
+
+t_voxel_dict: {'0_gear1': [86,149,179],'1_gear1': [193,121,124], '2_gear1': [148,225,152],'3_gear1': [139,73,172],'4_gear1': [152,126,206],'5_gear1': [110,116,143],
+    '0_heartgear': [78,128,207],'1_heartgear': [232,195,175], '2_heartgear': [144,178,128],'3_heartgear': [125,234,217],'4_heartgear': [80,180,186],'5_heartgear': [92,138,148],
+    '0_heartgear_round': [130,97,163],'1_heartgear_round': [147,159,180], '2_heartgear_round': [185,141,207],'3_heartgear_round':[169,165,134],'4_heartgear_round': [103,110,152],'5_heartgear_round': [190,214,167],
+               '0_dent_gear': [167,149,191],'1_dent_gear': [151,199,138], '2_dent_gear': [124,106,196],'3_dent_gear': [157,186,145],'4_dent_gear': [192,146,200], '5_dent_gear': [210,158,152],
+}
+
+
+
+
+
+
+
+optimizer: 'adamw'
+
+log_every_n_steps: 2
+check_val_every_n_epoch: 2
+
+loss_function_type: "MSELoss"
+
+
+inputFolder:  'C:\projections'
+#train_path: 'F:\projections\Training'
+#val_path: 'F:\projections\Validation'
+
+
+input_nc: 1
+calc: True
+simulate: False
+mode: train
+
+early_stopping:
+  monitor: 'val/loss'  # The metric to monitor for early stopping
+  patience: 50  # Number of epochs with no improvement after which training will stop
+  mode: 'min'  # 'min' if you want to minimize the monitored metric, 'max' if you want to maximize
+  min_delta: 0.0  # Minimum change in the monitored metric to be considered as an improvement
+  verbose: True
+
+defaults:
+  - _self_
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .

@@ -1,0 +1,66 @@
+command:
+  - ${.python_packages}
+  - python3
+  - ${program}
+  - ${args_no_hyphens}
+defaults:
+  - _self_
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+early_stopping:
+  min_delta: 0
+  mode: min
+  monitor: val/loss
+  patience: 50
+  verbose: true
+hydra:
+  output_subdir: null
+  run:
+    dir: .
+method: bayes
+metric:
+  goal: minimize
+  name: val_loss
+parameters:
+  base_lr:
+    distribution: categorical
+    values:
+      - 0.0005
+      - 0.001
+      - 0.005
+      - 0.01
+  batch_size:
+    distribution: categorical
+    values:
+      - 1
+      - 8
+      - 16
+      - 32
+      - 64
+  loss_function_type:
+    distribution: categorical
+    values:
+      - MSELoss
+      - L1Loss
+      - PoissonNLLLoss
+  mode:
+    value: train
+  model_type:
+    distribution: categorical
+    values:
+      - ResNet50
+      - ResNet101
+      - ResNet152
+      - EfficientNetB0
+      - EfficientNetB1
+      - EfficientNetB2
+      - VGG16
+      - VGG19
+  num_epochs:
+    value: 200
+  optimizer:
+    values:
+      - adamw
+  train_ratio:
+    value: 0.8
+program: trainer.py

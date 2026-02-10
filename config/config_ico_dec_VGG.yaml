@@ -1,0 +1,39 @@
+#Eine YAML-Datei ist eine Datei, die im YAML (YAML Ain't Markup Language) Format geschrieben ist. YAML ist eine menschenlesbare Daten-Serialisierungssprache, die hÃ¤ufig fÃ¼r die Konfiguration von Anwendungen und den Austausch von Daten zwischen verschiedenen Programmiersprachen verwendet wird.
+
+#Eine YAML-Datei besteht aus einer Sammlung von SchlÃ¼ssel-Wert-Paaren und Listen, die mithilfe von EinrÃ¼ckungen und Leerzeichen strukturiert werden.
+
+project: DecIdx_Sphere_iCT
+entity: patternrecognition_team
+
+model_type: VGG19
+train_ratio: 0.8
+resize_shape: 375
+batch_size: 5
+base_lr: 0.01
+num_epochs: 200
+
+optimizer: adam
+#target_voxel: [[160,160,160]]
+log_every_n_steps: 50
+check_val_every_n_epoch: 50
+loss_function_type: 'MSELoss' # WÃ¤hle hier 'MSELoss', 'L1Loss' oder 'PoissonNLLLoss'
+
+inputFolder: '/cluster/shared_dataset/BT_Fadi_Linda_Gears/PreTrainingData/Training'
+input_nc: 1
+calc: True
+simulate: False
+mode: train
+
+
+
+
+
+defaults:
+  - _self_
+  - override hydra/hydra_logging: disabled
+  - override hydra/job_logging: disabled
+
+hydra:
+  output_subdir:
+  run:
+    dir: .
