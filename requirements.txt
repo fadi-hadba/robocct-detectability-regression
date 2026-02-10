@@ -1,0 +1,17 @@
+# Minimal runtime dependencies for this repo.
+# Pin versions if you need exact reproducibility across machines.
+
+numpy
+pillow
+matplotlib
+opencv-python
+
+torch
+torchvision
+lightning
+hydra-core
+omegaconf
+wandb
+
+natsort
+scikit-learn

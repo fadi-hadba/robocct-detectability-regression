@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtualenv
+.venv/
+venv/
+ENV/
+env/
+
+# Env files / secrets
+.env
+*.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ML artifacts
+runs/
+checkpoints/
+wandb/
+lightning_logs/
+outputs/
+multirun/
+*.ckpt
+*.pt
+*.pth
+
+# Data (do not commit)
+data/
+datasets/
+*.raw
+*.npy
+*.npz
+*.nii
+*.nii.gz
+*.mhd
+*.mha
+*.tif
+*.tiff
+
+# IDE
+.vscode/
+.idea/
